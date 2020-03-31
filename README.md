@@ -4,11 +4,11 @@
 
 ## Created By:
 
-**Name**: [ YOUR NAME]
+**Name**: Marjana Cowan
 
-**Email**: [ YOUR EMAIL]
+**Email**: mdcowan@student.fullsail.edu
 
-**Slack Username**: [ YOUR USERNAME]
+**Slack Username**: mdcowan
 
 ## Setting up the app
 
