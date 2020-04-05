@@ -10,7 +10,6 @@ class Model {
 
   // pass the data to be added
   create(item) {
-    console.log(item);
     // create a uuid
     const id = uuid();
     // add the item data and the id to the array of values
@@ -58,4 +57,5 @@ module.exports = {
   Quizzes: new Model(quizzes),
   Questions: new Model(questions),
   Choices: new Model(choices),
+  // Auth: new Model(Auth)
 };

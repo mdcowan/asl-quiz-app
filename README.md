@@ -1,6 +1,6 @@
-# [ PROJECT NAME ]
+# [ MOVIE TRIVIA QUIZ ]
 
-[ DESCRIPTION OF YOUR PROJECT]
+[ This app assignment has been created for the Advanced Serverside Languages course. Users can take quizzes created by others for fun movie trivia challenges or create quizes of their own.]
 
 ## Created By:
 
