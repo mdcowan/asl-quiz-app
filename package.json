@@ -5,12 +5,15 @@
   "main": ".eslintrc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently --raw \"npm run api\" \"npm run web\"",
+    "api": "cd api; nodemon server.js",
     "web": "cd web; nodemon server.js"
   },
   "dependencies": {
     "minimist": "^1.2.5"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
