@@ -1,0 +1,40 @@
+{
+  "name": "asl-quiz-app-mdcowan",
+  "version": "1.0.0",
+  "description": "[ DESCRIPTION OF YOUR PROJECT]",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "cd web; nodemon server.js"
+  },
+  "dependencies": {
+    "minimist": "^1.2.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.2",
+    "nodemon": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASL-WDD442/asl-quiz-app-mdcowan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ASL-WDD442/asl-quiz-app-mdcowan/issues"
+  },
+  "homepage": "https://github.com/ASL-WDD442/asl-quiz-app-mdcowan#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
+}
