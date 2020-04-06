@@ -7,3 +7,6 @@ block content
                 span Question Title
                 input.form__input(type="text", name="title" value=title)
             button(type="submit" class="button active")= id ? 'Save Question' : 'Add a New Question'
+            if errors
+                for error in errors
+                    small.flash=error.msg

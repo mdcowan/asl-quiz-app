@@ -7,7 +7,7 @@ const validationCtrl = require('../controllers/validation');
 router.get('/new', choiceCtrl.renderChoiceForm);
 // POST /admin/choices/new - validate the data and than save it
 router.post('/new', [
-  validationCtrl.validate('createChoices'),
+  validationCtrl.validate('createChoice'),
   choiceCtrl.renderChoiceFormWithErrors,
   choiceCtrl.saveChoice,
 ]);
@@ -15,13 +15,15 @@ router.post('/new', [
 router.get('/edit/:id', choiceCtrl.renderEditForm);
 // POST /admin/choices/edit/:id - validate the data and than save it
 router.post('/edit/:id', [
-  validationCtrl.validate('editChoices'),
+  validationCtrl.validate('editChoice'),
   choiceCtrl.renderChoiceFormWithErrors,
   choiceCtrl.saveChoice,
 ]);
 // GET /admin/choices/delete/:id - deletes a Choices
 router.get('/delete/:id', [
-  validationCtrl.validate('deleteChoices'),
+  validationCtrl.validate('deleteChoice'),
   choiceCtrl.goBackOnError,
   choiceCtrl.deleteChoice,
 ]);
+// export the route from this file
+module.exports = router;

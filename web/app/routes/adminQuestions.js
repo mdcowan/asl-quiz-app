@@ -15,7 +15,7 @@ router.post('/new', [
 router.get('/edit/:id', questionCtrl.renderEditForm);
 // POST /admin/questions/edit/:id - validate the data and than save it
 router.post('/edit/:id', [
-  validationCtrl.validate('editQuestions'),
+  validationCtrl.validate('editQuestion'),
   questionCtrl.renderQuestionFormWithErrors,
   questionCtrl.saveQuestion,
 ]);

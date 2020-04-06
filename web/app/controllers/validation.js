@@ -52,7 +52,7 @@ exports.validate = (method) => {
       return [checks.id, checkForErrors];
     }
 
-    case 'createQuestion': {
+    case 'createQuestions': {
       return [checks.title, checks.quizId, checkForErrors];
     }
 

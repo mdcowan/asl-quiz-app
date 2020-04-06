@@ -9,5 +9,6 @@ block content
     for question in questions
       li.list__item
         span.list__item__title= question.title
+        +link('/admin/questions/'+question.id, 'View')
         +link('/admin/questions/edit/'+ question.id + '?quizId=' + quiz.id, 'Edit', 'fa-edit')
   a(href="/admin/questions/new?quizId="+quiz.id class='button active') Add a new question
