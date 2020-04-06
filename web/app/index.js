@@ -22,7 +22,7 @@ app.set('view engine', 'pug');
 app.set('views', `${__dirname}/views`);
 // setup routers
 app.use('/', publicRoutes);
-app.use('/admin/decisions', adminQuizRoutes);
+app.use('/admin/quizzes', adminQuizRoutes);
 // four params are required to mark this as a error handling middleware
 // the comment below this allows for eslint to not throw an error because
 // I am not using the next function

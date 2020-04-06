@@ -10,6 +10,7 @@
     "web": "cd web; nodemon server.js"
   },
   "dependencies": {
+    "express-validator": "^6.4.0",
     "minimist": "^1.2.5"
   },
   "devDependencies": {

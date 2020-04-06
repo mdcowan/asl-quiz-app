@@ -1,0 +1,9 @@
+extends ../_layout
+block content
+    main.main__container
+        h1.heading Create a Question
+        form.form(method="POST")
+            label.form__label 
+                span Question Title
+                input.form__input(type="text", name="title")
+            button(type="submit" class="button active") Create Question

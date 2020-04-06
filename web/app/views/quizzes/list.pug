@@ -1,0 +1,10 @@
+extends ../_layout
+include ../_includes/link_mixin
+block content
+  h1.heading My Quizzes
+  ul.list
+    for quiz in quizzes
+      li.list__item
+        span.list__item__title= quiz.name
+        +link('/admin/quizzes/'+quiz.id, 'View')
+        +link('/admin/quizzes/'+quiz.id, 'Edit', 'fa-edit', 'linkSecondary')
