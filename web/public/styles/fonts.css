@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Aldrich&Cabin");
+
+:root {
+  --default-font-family: 'Cabin', sans-serif;
+  --secondary-font-family: 'Aldrich', sans-serif;
+  --default-font: 200 18px/1.25em var(--default-font-family);
+}
+
+html {
+  font: var(--default-font);
+}
+
+.heading {
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  font-size: 2.5em;
+  line-height: 1.25em;
+  color: var(--primary-color);
+  border: 5px dotted var(--primary-color);
+}
+
+.headingSecondary {
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  font-size: 2em;
+  color: var(--secondary-color);
+}
+
+.link {
+  font-family: var(--secondary-font-family);
+  font-size: 14px;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 4px 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--active-color);
+  border: none;
+  border-bottom: 1px solid var(--active-color);
+  outline: none;
+  background: none;
+}
+
+.fas {
+  margin-right: 0.5em;
+}
+
+.link:hover {
+  opacity: 0.6;
+}
+
+.linkSecondary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.button {
+  font-family: var(--secondary-font-family);
+  font-size: 18px;
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--light-text-color);
+  border: none;
+  outline: 5px dotted var(--primary-color);
+  border-radius: 3px;
+}

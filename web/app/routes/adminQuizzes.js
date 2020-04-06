@@ -2,10 +2,7 @@
 const router = require('express').Router();
 // load the controller
 const quizCtrl = require('../controllers/quizzes');
-// GET / - loads the home page
-router.get('/', quizCtrl.renderLanding);
-// GET /quiz/:quizId
-router.get('/quiz/:quizId', quizCtrl.renderQuiz);
-
+// GET /admin/decisions/new - loads the form to create a new decision
+router.get('/new', quizCtrl.renderQuizForm);
 // export the route from this file
 module.exports = router;

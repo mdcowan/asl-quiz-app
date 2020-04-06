@@ -1,0 +1,10 @@
+header.header
+  .header__container
+    a(href='#' class='header__brand') Movie Trivia Quiz
+    .links
+      if loggedIn
+        a(href='/quiz' class='header__link') Dashboard
+        a(href='/quiz_form' class='header__link') Create a new Question
+        a(href='/quiz' class='header__link') Logout
+      else
+        a(href='#' class='header__link') Login

@@ -1,0 +1,14 @@
+extends ../_layout
+block content
+    main.main__container
+        h1.heading Create A New Quiz
+        form.form(method="POST")
+            label.form__label Name
+            input.form__input(type="text", name="name")
+            label.form__label
+                input.form__input__radio(type="radio", name="type", value="public")
+                span Public
+            label.form__labelInline
+                input.form__input__radio(type="radio", name="type", value="private")
+                span Private
+            button.button(type="submit") Create Quiz

@@ -6,11 +6,14 @@ const error = require('debug')('web:error');
 const API = require('./utils/API');
 // load routers
 const publicRoutes = require('./routes/public');
+const adminQuizRoutes = require('./routes/adminQuizzes');
 // create an express app
 const app = express();
 
 // setup a folder to hold all the static files
 app.use(express.static('public'));
+// checks to see if the content-type is url-encoded and parses it into req.body
+app.use(express.urlencoded({ extended: true }));
 // axios middleware
 app.use(API);
 // setting pug as the view engine
@@ -19,6 +22,7 @@ app.set('view engine', 'pug');
 app.set('views', `${__dirname}/views`);
 // setup routers
 app.use('/', publicRoutes);
+app.use('/admin/decisions', adminQuizRoutes);
 // four params are required to mark this as a error handling middleware
 // the comment below this allows for eslint to not throw an error because
 // I am not using the next function
