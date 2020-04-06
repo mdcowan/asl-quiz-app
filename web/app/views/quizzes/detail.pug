@@ -11,4 +11,4 @@ block content
       li.list__item
         span.list__item__title= question.title
         +link('/admin/questions/edit/'+ question.id + '?quizId=' + quiz.id, 'Edit', 'fa-edit')
-    a.button(href="/admin/questions/new?quizId="+quiz.id) Add a new question
+  a(href="/admin/questions/new?quizId="+quiz.id class='button active') Add a new question

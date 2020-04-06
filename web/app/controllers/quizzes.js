@@ -70,8 +70,9 @@ exports.renderAdminQuizDetail = async (req, res) => {
   const { id } = req.params;
   // console.log(`getting quiz detail ${req}`);
   // get the details of the quizzes
-  const quizzes = await req.API.get(`/quizzes/${id}`);
+  const quiz = await req.API.get(`/quizzes/${id}`);
   // get the questions for this quizzes
-  const questions = await req.API.get(`/options?quizId=${id}`);
-  res.render('quizzes/detail', { quizzes, questions });
+  const questions = await req.API.get(`/questions?quizId=${id}`);
+
+  res.render('quizzes/detail', { quiz, questions });
 };
