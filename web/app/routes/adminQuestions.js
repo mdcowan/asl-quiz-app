@@ -25,8 +25,7 @@ router.get('/delete/:id', [
   questionCrtl.goBackOnError,
   questionCrtl.deleteQuestion,
 ]);
-// GET /admin/questions - loads all the user questions
-router.get('/list', questionCrtl.renderDashboard);
+
 // GET /admin/questions/:id - loads the detail page
 router.get('/:id', questionCrtl.renderAdminQuestionDetail);
 // export the route from this file

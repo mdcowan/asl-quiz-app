@@ -1,7 +1,7 @@
 extends ../_layout
 include ../_includes/link_mixin
 block content
-  h1.heading= question.title
+  h1.heading= title
     +link('/questions/'+question.id, 'View')
     +link('/admin/questions/edit/'+question.id, 'Edit', 'fa-edit')
     +link('/admin/questions/delete/'+question.id, 'Delete', 'fa-trash', 'linkSecondary')

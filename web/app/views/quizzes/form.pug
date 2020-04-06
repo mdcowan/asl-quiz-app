@@ -5,13 +5,16 @@ block content
         form.form(method="POST")
             label.form__label 
                 span Quiz Name
-                input.form__input(type="text", name="name")
+                input.form__input(type="text", name="name", value=name) 
             label.form__label
                 span Quiz Type
                 label.form__labelInline
-                    input.form__input__radio(type="radio", checked name="type", value="public")
+                    input.form__input__radio(type="radio", name="type", value="public", checked=type==="public")
                     span Public
                 label.form__labelInline
-                    input.form__input__radio(type="radio", name="type", value="private")
+                    input.form__input__radio(type="radio", name="type", value="private", checked=type==="private")
                     span Private
             button(type="submit" class="button active") Create Quiz
+            if errors
+                for error in errors
+                    small.flash=error.msg

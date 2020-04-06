@@ -5,11 +5,11 @@ block content
     h2.headingSecondary Are you a movie buff? Test your skills here!
     p Check out the quizzes created by others below for fun movie trivia challenges
     h2.headingSecondary Want to test your friend's knowledge?
-    a(href='' class='button primary') Create your own Quiz
+    a(href='/admin/quizzes/new' class='button primary') Create your own Quiz
     h1.heading Public Quizzes
     ul.list
         for quiz in quizzes
             li.list__item
                 span.list__item__title= quiz.name 
                 +link('/admin/quizzes/'+quiz.id, 'View')
-    a(href='' class='button primary') Create your own Quiz
+    a(href='/admin/quizzes/new' class='button primary') Create your own Quiz

@@ -23,6 +23,7 @@ exports.saveQuiz = async (req, res) => {
   // pull the id from the url
   const { id } = req.params;
   // variable to hold the data from our api request
+  // eslint-disable-next-line no-unused-vars
   let data = {};
   // if there is an id, we are editing, if there isn't we are adding
   if (id) {
@@ -33,16 +34,16 @@ exports.saveQuiz = async (req, res) => {
     data = await req.API.post('/quizzes', { name, type });
   }
   // redirect to the edit quiz form
-  res.redirect(`/admin/quizzes/edit/${data.id}`);
+  res.redirect('/admin/quizzes/list');
 };
 
 exports.renderEditForm = async (req, res) => {
   // the the id from the url
   const { id } = req.params;
   // get the details of the quiz
-  const quizzes = await req.API.get(`/quizzes/${id}`);
+  const { name, type } = await req.API.get(`/quizzes/${id}`);
   // render the edit form
-  res.render('quizzes/form', quizzes);
+  res.render('quizzes/form', { name, type });
 };
 
 // four params are required to mark this as a error handling middleware
