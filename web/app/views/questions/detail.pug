@@ -1,14 +1,13 @@
 extends ../_layout
 include ../_includes/link_mixin
 block content
-  h1.heading= title
-    +link('/questions/'+question.id, 'View')
-    +link('/admin/questions/edit/'+question.id, 'Edit', 'fa-edit')
-    +link('/admin/questions/delete/'+question.id, 'Delete', 'fa-trash', 'linkSecondary')
+  h1.heading= question.title
+    +link('/admin/questions/edit/'+ question.id, 'Edit', 'fa-edit')
+    +link('/admin/questions/delete/'+ question.id, 'Delete', 'fa-trash', 'linkSecondary')
   h2.headingSecondary Questions
   ul.list
     for choice in choices
       li.list__item
         span.list__item__title= choice.value
         +link('/admin/choices/edit/' + choice.id + '?questionId=' + question.id, 'Edit', 'fa-edit')
-  a.button(href="/admin/choices/new?questionId="+question.id) Add a new choice
+  a(href="/admin/choices/new?questionId="+question.id class="button active") Add a new choice

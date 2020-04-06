@@ -1,7 +1,7 @@
 extends ../_layout
 block content
     main.main__container
-        h1.heading Create a Quiz
+        h1.heading= id ? 'Edit a Quiz' : 'Create a New Quiz'
         form.form(method="POST")
             label.form__label 
                 span Quiz Name
@@ -14,7 +14,7 @@ block content
                 label.form__labelInline
                     input.form__input__radio(type="radio", name="type", value="private", checked=type==="private")
                     span Private
-            button(type="submit" class="button active") Create Quiz
+            button(type="submit" class="button active")= id ? 'Save Quiz' : 'Create a New Quiz'
             if errors
                 for error in errors
                     small.flash=error.msg

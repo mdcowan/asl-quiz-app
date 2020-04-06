@@ -7,7 +7,7 @@ const validationCtrl = require('../controllers/validation');
 router.get('/new', quizCtrl.renderQuizForm);
 // POST /admin/quizzes/new - validate the data and than save it
 router.post('/new', [
-  validationCtrl.validate('createQuizzes'),
+  validationCtrl.validate('createQuiz'),
   quizCtrl.renderQuizFormWithErrors,
   quizCtrl.saveQuiz,
 ]);
@@ -15,7 +15,7 @@ router.post('/new', [
 router.get('/edit/:id', quizCtrl.renderEditForm);
 // POST /admin/quizzes/edit/:id - validate the data and than save it
 router.post('/edit/:id', [
-  validationCtrl.validate('editQuizzes'),
+  validationCtrl.validate('editQuiz'),
   quizCtrl.renderQuizFormWithErrors,
   quizCtrl.saveQuiz,
 ]);

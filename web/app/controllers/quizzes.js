@@ -43,7 +43,7 @@ exports.renderEditForm = async (req, res) => {
   // get the details of the quiz
   const { name, type } = await req.API.get(`/quizzes/${id}`);
   // render the edit form
-  res.render('quizzes/form', { name, type });
+  res.render('quizzes/form', { id, name, type });
 };
 
 // four params are required to mark this as a error handling middleware

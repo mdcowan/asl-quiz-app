@@ -1,24 +1,19 @@
-exports.renderLanding = async (req, res) => {
-  const questions = await req.API.get('/questions/public');
-  res.render('landing', { questions });
-};
-
-exports.renderQuizForm = (req, res) => {
-  res.render('questions/form', { name: '', type: 'private' });
+exports.renderQuestionForm = (req, res) => {
+  res.render('questions/form', { title: '' });
 };
 
 // four params are required to mark this as a error handling middleware
 // eslint-disable-next-line no-unused-vars
-exports.renderQuizFormWithErrors = (errors, req, res, next) => {
+exports.renderQuestionFormWithErrors = (errors, req, res, next) => {
   // get the data the user submitted
-  const { name, type } = req.body;
+  const { title } = req.body;
   // send the title, type, and errors as variables to the view.
-  res.render('questions/form', { name, type, errors });
+  res.render('questions/form', { title, errors });
 };
 
-exports.saveQuiz = async (req, res) => {
+exports.saveQuestion = async (req, res) => {
   // get the data the user submitted
-  const { name, type } = req.body;
+  const { title } = req.body;
   // pull the id from the url
   const { id } = req.params;
   // variable to hold the data from our api request
@@ -27,22 +22,22 @@ exports.saveQuiz = async (req, res) => {
   // if there is an id, we are editing, if there isn't we are adding
   if (id) {
     // make a put request with the updated information
-    data = await req.API.put(`/questions/${id}`, { name, type });
+    data = await req.API.put(`/questions/${id}`, { title });
   } else {
-    // send the new quizs to the api
-    data = await req.API.post('/questions', { name, type });
+    // send the new question to the api
+    data = await req.API.post('/questions', { title });
   }
-  // redirect to the edit quiz form
-  res.redirect('/admin/questions/list');
+  // redirect to the edit question form
+  res.redirect(`/admin/questions/${id}`);
 };
 
 exports.renderEditForm = async (req, res) => {
   // the the id from the url
   const { id } = req.params;
-  // get the details of the quiz
-  const { name, type } = await req.API.get(`/questions/${id}`);
+  // get the details of the question
+  const { title } = await req.API.get(`/questions/${id}`);
   // render the edit form
-  res.render('questions/form', { name, type });
+  res.render('questions/form', { title });
 };
 
 // four params are required to mark this as a error handling middleware
@@ -62,7 +57,6 @@ exports.deleteQuestion = async (req, res) => {
 
 exports.renderAdminQuestionDetail = async (req, res) => {
   const { id } = req.params;
-  // console.log(`getting quiz detail ${req}`);
   // get the details of the questions
   const question = await req.API.get(`/questions/${id}`);
   // get the choices for this questions
