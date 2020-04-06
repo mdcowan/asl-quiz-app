@@ -11,7 +11,7 @@ exports.renderChoiceFormWithErrors = (errors, req, res, next) => {
   res.render('choices/form', { value, type, errors });
 };
 
-exports.saveQuestion = async (req, res) => {
+exports.saveChoice = async (req, res) => {
   // get the data the user submitted
   const { value, type } = req.body;
   // pull the id from the url
@@ -47,7 +47,7 @@ exports.goBackOnError = (errors, req, res, next) => {
   res.redirect('back');
 };
 
-exports.deleteQuestion = async (req, res) => {
+exports.deleteChoice = async (req, res) => {
   const { id } = req.params;
   // send the delete request to the api
   await req.API.delete(`/choices/${id}`);

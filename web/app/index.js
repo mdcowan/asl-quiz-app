@@ -8,6 +8,7 @@ const API = require('./utils/API');
 const publicRoutes = require('./routes/public');
 const adminQuizRoutes = require('./routes/adminQuizzes');
 const adminQuestionRoutes = require('./routes/adminQuestions');
+const adminChoiceRoutes = require('./routes/adminChoices');
 // create an express app
 const app = express();
 
@@ -25,6 +26,7 @@ app.set('views', `${__dirname}/views`);
 app.use('/', publicRoutes);
 app.use('/admin/quizzes', adminQuizRoutes);
 app.use('/admin/questions', adminQuestionRoutes);
+app.use('/admin/choices', adminChoiceRoutes);
 // four params are required to mark this as a error handling middleware
 // the comment below this allows for eslint to not throw an error because
 // I am not using the next function
