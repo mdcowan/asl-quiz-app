@@ -1,66 +1,78 @@
 // load in the decision model
 const { Quizzes } = require('../models');
 
-// get all the decisions
-exports.getAll = (req, res) => {
+// get all the quizzes
+exports.getAll = async (req, res) => {
   // run the find all function on the model
-  const quizzes = Quizzes.findAll();
-  // respond with json of the decisions array
+  const quizzes = await Quizzes.findAll();
+  // respond with json of the quizzes array
   res.json(quizzes);
 };
 
-// get all the decisions with a type of public
-exports.getPublic = (req, res) => {
+// get all the quizzes with a type of public
+exports.getPublic = async (req, res) => {
   // run the find all function on the model
-  const quizzes = Quizzes.findAll();
-  // filter the decisions to only decisions who have a type of "public"
-  const publicQuizzes = quizzes
-    .filter((quiz) => quiz.type === 'public');
-    // respond with json of the public decisions array
+  // filter the quizzes to only quizzes who have a type of "public"
+  const publicQuizzes = await Quizzes.findAll({ where: { type: 'public' } });
+  // respond with json of the public quizzes array
   res.json(publicQuizzes);
 };
 
-// find one decision by id
-exports.getOneById = (req, res) => {
+// find one quiz by id
+exports.getOneById = async (req, res) => {
   // get the id from the route params
   const { id } = req.params;
-  // search our decision model for the decision
-  const quiz = Quizzes.findByPk(id);
-  // if no decision is found
+  // search our quiz model for the decision
+  const quiz = await Quizzes.findByPk(id);
+  // if no quiz is found
   if (!quiz) {
     // return a 404 (not found) code
     res.sendStatus(404);
     return;
   }
 
-  // if the decision is found send it back.
+  // if the quiz is found send it back.
   res.json(quiz);
 };
 
 // add a new quiz
-exports.createQuiz = (req, res) => {
+exports.createQuiz = async (req, res) => {
   // get the title and type values from the request body
   const { name, type, userId } = req.body;
-  console.log(req.body);
-  // create the item and save the new id
-  const id = Quizzes.create({ name, type, userId });
-  // send the new id back to the request
-  res.json({ id });
+  try {
+    // create the item and save the new id
+    const newDecision = await Quizzes.create({ name, type, userId });
+    // send the new id back to the request
+    res.json({ id: newDecision.id });
+  } catch (e) {
+    // map the error messages and send them back
+    const errors = e.errors.map((err) => err.message);
+    res.status(400).json({ errors });
+  }
 };
 
 // update an existing quiz
-exports.updateQuiz = (req, res) => {
+exports.updateQuiz = async (req, res) => {
   const { id } = req.params;
-  const updatedQuizzes = Quizzes.update(req.body, id);
-  res.json(updatedQuizzes);
+  try {
+    const [, [updatedQuizzes]] = await Quizzes.update(req.body, {
+      where: { id },
+      returning: true,
+    });
+    res.json(updatedQuizzes);
+  } catch (e) {
+    // map the error messages and send them back
+    const errors = e.errors.map((err) => err.message);
+    res.status(400).json({ errors });
+  }
 };
 
 // delete a quiz
-exports.removeQuiz = (req, res) => {
+exports.removeQuiz = async (req, res) => {
   // get the id from the route
   const { id } = req.params;
   // remove the quiz
-  Quizzes.destroy(id);
+  await Quizzes.destroy({ where: { id } });
   // send a good status code
   res.sendStatus(200);
 };
