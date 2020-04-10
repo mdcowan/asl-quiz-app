@@ -2,6 +2,7 @@ extends ../_layout
 include ../_includes/link_mixin
 block content
   h1.heading= quiz.name
+    +link('/admin/quizzes/'+quiz.id, 'View')
     +link('/admin/quizzes/edit/'+quiz.id, 'Edit', 'fa-edit')
     +link('/admin/quizzes/delete/'+quiz.id, 'Delete', 'fa-trash', 'linkSecondary')
   h2.headingSecondary Questions
@@ -10,5 +11,5 @@ block content
       li.list__item
         span.list__item__title= question.title
         +link('/admin/questions/'+question.id, 'View')
-        +link('/admin/questions/edit/'+ question.id + '?quizId=' + quiz.id, 'Edit', 'fa-edit')
+        +link('/admin/questions/delete/'+ question.id, 'Delete', 'fa-trash', 'linkSecondary')
   a(href="/admin/questions/new?quizId="+quiz.id class='button active') Add a new question

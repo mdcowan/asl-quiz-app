@@ -51,6 +51,7 @@ exports.goBackOnError = (errors, req, res, next) => {
 
 exports.deleteChoice = async (req, res) => {
   const { id } = req.params;
+  console.log(`choiceId: ${id}`);
   // send the delete request to the api
   await req.API.delete(`/choices/${id}`);
   // redirect to the dashboard
