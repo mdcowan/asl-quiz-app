@@ -2,7 +2,7 @@
 const router = require('express').Router();
 // import the choices controller
 const choiceControl = require('../controllers/choices');
-// GET /choices?quizId=
+// GET /choices?questionId=
 router.get('/', choiceControl.getQuestionChoices);
 // GET /choices/:id
 router.get('/:id', choiceControl.getOneById);

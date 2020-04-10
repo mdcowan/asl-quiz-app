@@ -4,9 +4,11 @@ const { Choices } = require('../models');
 exports.getQuestionChoices = async (req, res) => {
   // get the question id from the query
   const { questionId } = req.query;
+  console.log(`questionId: ${questionId}`);
   // run the find all function on the model
   // filter the choices to only choices for this question
-  const questionChoices = Choices.findAll({ where: { questionId } });
+  const questionChoices = await Choices.findAll({ where: { questionId } });
+  console.log(`api choices: ${questionChoices.length}`);
   // respond with json of the question's choice array
   res.json(questionChoices);
 };

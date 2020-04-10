@@ -4,7 +4,7 @@ block content
   h1.heading= question.title
     +link('/admin/questions/edit/'+ question.id, 'Edit', 'fa-edit')
     +link('/admin/questions/delete/'+ question.id, 'Delete', 'fa-trash', 'linkSecondary')
-  h2.headingSecondary Questions
+  h2.headingSecondary Choices
   ul.list
     for choice in choices
       li.list__item

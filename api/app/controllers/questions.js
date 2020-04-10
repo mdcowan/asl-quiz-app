@@ -33,6 +33,7 @@ exports.createQuestion = async (req, res) => {
   const { title, quizId } = req.body;
   try {
     // create the item and save the new id
+    console.log(`quizId: ${quizId}`);
     const newQuestion = Questions.create({ title, quizId });
     // send the new id back to the request
     res.json({ id: newQuestion.id });

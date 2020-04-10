@@ -74,6 +74,5 @@ exports.renderAdminQuizDetail = async (req, res) => {
   const quiz = await req.API.get(`/quizzes/${id}`);
   // get the questions for this quizzes
   const questions = await req.API.get(`/questions?quizId=${id}`);
-
   res.render('quizzes/detail', { quiz, questions });
 };

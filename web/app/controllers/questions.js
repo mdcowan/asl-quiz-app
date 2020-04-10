@@ -16,19 +16,21 @@ exports.saveQuestion = async (req, res) => {
   const { title } = req.body;
   // pull the id from the url
   const { id } = req.params;
+  // pull the quizId from the url query string
+  const { quizId } = req.query;
   // variable to hold the data from our api request
   // eslint-disable-next-line no-unused-vars
   let data = {};
   // if there is an id, we are editing, if there isn't we are adding
   if (id) {
     // make a put request with the updated information
-    data = await req.API.put(`/questions/${id}`, { title });
+    data = await req.API.put(`/questions/${id}`, { title, quizId });
   } else {
     // send the new question to the api
-    data = await req.API.post('/questions', { title });
+    data = await req.API.post('/questions', { title, quizId });
   }
-  // redirect to the edit question form
-  res.redirect(`/admin/questions/${id}`);
+  // redirect to the quiz detail page
+  res.redirect(`/admin/quizzes/${quizId}`);
 };
 
 exports.renderEditForm = async (req, res) => {
@@ -60,7 +62,7 @@ exports.renderAdminQuestionDetail = async (req, res) => {
   // get the details of the questions
   const question = await req.API.get(`/questions/${id}`);
   // get the choices for this questions
+  console.log(id);
   const choices = await req.API.get(`/choices?questionId=${id}`);
-
   res.render('questions/detail', { question, choices });
 };

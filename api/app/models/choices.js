@@ -25,13 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     questionId: {
       type: DataTypes.UUID,
-      validate: {
-        isUUID: { args: 4, msg: 'Id not valid, please try again.' },
-      },
     },
   }, {});
   Choices.associate = (models) => {
-    Choices.hasOne(models.Questions, { foreignKey: 'questionId' });
+    Choices.belongsTo(models.Questions, { foreignKey: 'questionId' });
   };
   return Choices;
 };
