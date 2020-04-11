@@ -7,10 +7,10 @@ const authCtrl = require('../controllers/auth');
 router.get('/', quizCtrl.renderLanding);
 // GET /login - loads the login page
 router.get('/login', authCtrl.renderLogin);
-// GET /login/amazon - sends them to slack for authorization
-router.get('/login/amazon', authCtrl.redirectToAmazon);
-// GET /amazon/callback - the route that is hit when coming back from slack
-router.get('/amazon/callback', authCtrl.verifyAmazonCode);
+// GET /login/slack - sends them to slack for authorization
+router.get('/login/slack', authCtrl.redirectToSlack);
+// GET /slack/callback - the route that is hit when coming back from slack
+router.get('/slack/callback', authCtrl.verifySlackCode);
 // GET /logout - log the user out of the application
 router.get('/logout', authCtrl.logout);
 

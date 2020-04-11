@@ -5,9 +5,9 @@ exports.renderLogin = (req, res) => {
   res.render('login');
 };
 
-exports.redirectToAmazon = (req, res) => {
+exports.redirectToSlack = (req, res) => {
   // the base url
-  const AMAZON_URL = 'https://...';
+  const SLACK_URL = 'https://slack.com/oauth/authorize?';
   // convert the object into a query string (?client_id=&scope=&redirect_uri=)
   const params = querystring.stringify({
     client_id: process.env.CLIENT_ID,
@@ -16,14 +16,14 @@ exports.redirectToAmazon = (req, res) => {
     scope: 'identity.basic,identity.email',
   });
 
-  log(AMAZON_URL + params);
-  res.redirect(AMAZON_URL + params);
+  log(SLACK_URL + params);
+  res.redirect(SLACK_URL + params);
 };
 
-exports.verifyAmazonCode = async (req, res) => {
+exports.verifySlackCode = async (req, res) => {
   const { code } = req.query;
   // make an API request to verify the code
-  const { token, loggedIn } = await req.API.post('/auth/amazon', { code, url: process.env.CALLBACK_URL });
+  const { token, loggedIn } = await req.API.post('/auth/slack', { code, url: process.env.CALLBACK_URL });
   // save the loggedIn state and token to the session
   req.session.loggedIn = loggedIn;
   req.session.token = token;

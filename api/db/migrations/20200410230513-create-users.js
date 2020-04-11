@@ -19,7 +19,7 @@ module.exports = {
       allowNull: true,
     },
     type: {
-      type: Sequelize.ENUM('amazon', 'regular'),
+      type: Sequelize.ENUM('slack', 'regular'),
     },
     createdAt: {
       allowNull: false,

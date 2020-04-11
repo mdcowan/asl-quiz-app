@@ -7,9 +7,9 @@ exports.exchangeCode = async (req, res) => {
   // pull the code out of the body
   const { code, url } = req.body;
   try {
-    // make a request to amazon for the access_token
+    // make a request to slack for the access_token
     const { data } = await axios.get(
-      'https://...',
+      'https://slack.com/api/oauth.access',
       {
         params: {
           client_id: process.env.CLIENT_ID,
@@ -23,7 +23,7 @@ exports.exchangeCode = async (req, res) => {
       username: data.user.email,
       access_token: data.access_token,
       name: data.user.name,
-      type: 'amazon',
+      type: 'slack',
     }, { returning: true });
     console.log('user', user);
     const token = jwt.sign({ id: user.id }, process.env.SECRET);

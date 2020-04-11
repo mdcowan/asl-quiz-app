@@ -2,8 +2,8 @@
     "env": {
       "DEBUG": "api:*",
       "SECRET": "hevpnsnietouesll",
-      "CLIENT_ID": "2228117327.575354274035",
-      "CLIENT_SECRET": "66e8071669440f21b0a3c8b9006073b5"
+      "CLIENT_ID": "2228117327.1057504867381",
+      "CLIENT_SECRET": "e9103b7ffd6ec00a40dbf79e2b067393"
     }
   }
   

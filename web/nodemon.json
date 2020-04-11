@@ -1,8 +1,9 @@
 {
     "env": {
       "DEBUG": "web:*",
-      "CLIENT_ID": "getclientidfromamazon",
-      "CALLBACK_URL": "http://localhost:3000/amazon/callback"
+      "SECRET": "hevpnsnietouesll",
+      "CLIENT_ID": "2228117327.1057504867381",
+      "CALLBACK_URL": "http://localhost:3000/slack/callback"
     },
     "ignore": "sessions"
   }

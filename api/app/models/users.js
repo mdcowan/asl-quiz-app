@@ -22,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     type: {
-      type: DataTypes.ENUM('amazon', 'regular'),
+      type: DataTypes.ENUM('slack', 'regular'),
       validate: {
         isIn: {
-          args: [['amazon', 'regular']],
+          args: [['slack', 'regular']],
           msg: 'User type must be amazon or regular',
         },
       },
