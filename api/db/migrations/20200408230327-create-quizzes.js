@@ -12,9 +12,6 @@ module.exports = {
     type: {
       type: Sequelize.ENUM('public', 'private'),
     },
-    userId: {
-      type: Sequelize.UUID,
-    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

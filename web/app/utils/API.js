@@ -16,6 +16,19 @@ const api = (req, res, next) => {
     },
   );
 
+  // for each api request going out
+  API.interceptors.request.use(async (config) => {
+    // pull the token out of the session
+    const { token } = req.session;
+    // if there is no token do nothing
+    if (!token) return config;
+    // if there is a token, set a header for any request that contains the token
+    return {
+      ...config,
+      headers: { common: { token } },
+    };
+  });
+
   req.API = API;
   next();
 };

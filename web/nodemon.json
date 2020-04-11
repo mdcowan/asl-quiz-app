@@ -1,6 +1,9 @@
 {
     "env": {
-      "DEBUG": "web:*"
-    }
+      "DEBUG": "web:*",
+      "CLIENT_ID": "getclientidfromamazon",
+      "CALLBACK_URL": "http://localhost:3000/amazon/callback"
+    },
+    "ignore": "sessions"
   }
   

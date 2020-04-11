@@ -2,8 +2,14 @@
 const express = require('express');
 // add a logger
 const error = require('debug')('web:error');
+// middleware for sessions
+const expressSession = require('express-session');
+// store for saving sessions
+const FileStore = require('session-file-store')(expressSession);
 // load in the axios middleware
 const API = require('./utils/API');
+// load in the protectedRoute middleware
+const protectedRoute = require('./utils/protectedRoute');
 // load routers
 const publicRoutes = require('./routes/public');
 const adminQuizRoutes = require('./routes/adminQuizzes');
@@ -11,6 +17,28 @@ const adminQuestionRoutes = require('./routes/adminQuestions');
 const adminChoiceRoutes = require('./routes/adminChoices');
 // create an express app
 const app = express();
+
+// session middleware
+app.use(expressSession({
+  // another secret used for encoding session data
+  secret: process.env.SECRET,
+  // should the session save again if nothing has changed?
+  resave: false,
+  // should sessions be created if they have no data?
+  saveUninitialized: false,
+  // where to store the session data
+  store: new FileStore(),
+}));
+
+// function for passing default data to the templates
+app.use((req, res, next) => {
+  // pull the loggedIn state out of the session
+  const { loggedIn = false } = req.session;
+  // set it to locals (data passed to templates)
+  res.locals.loggedIn = loggedIn;
+  // go to the next middleware function
+  next();
+});
 
 // setup a folder to hold all the static files
 app.use(express.static('public'));
@@ -24,9 +52,9 @@ app.set('view engine', 'pug');
 app.set('views', `${__dirname}/views`);
 // setup routers
 app.use('/', publicRoutes);
-app.use('/admin/quizzes', adminQuizRoutes);
-app.use('/admin/questions', adminQuestionRoutes);
-app.use('/admin/choices', adminChoiceRoutes);
+app.use('/admin/quizzes', protectedRoute, adminQuizRoutes);
+app.use('/admin/questions', protectedRoute, adminQuestionRoutes);
+app.use('/admin/choices', protectedRoute, adminChoiceRoutes);
 // four params are required to mark this as a error handling middleware
 // the comment below this allows for eslint to not throw an error because
 // I am not using the next function
