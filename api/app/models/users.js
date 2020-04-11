@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isIn: {
           args: [['slack', 'regular']],
-          msg: 'User type must be amazon or regular',
+          msg: 'User type must be slack or regular',
         },
       },
     },

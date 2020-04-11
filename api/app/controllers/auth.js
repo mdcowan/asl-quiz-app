@@ -25,7 +25,6 @@ exports.exchangeCode = async (req, res) => {
       name: data.user.name,
       type: 'slack',
     }, { returning: true });
-    console.log('user', user);
     const token = jwt.sign({ id: user.id }, process.env.SECRET);
     res.json({ token, loggedIn: true });
   } catch (e) {

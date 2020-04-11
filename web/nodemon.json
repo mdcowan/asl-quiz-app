@@ -2,7 +2,7 @@
     "env": {
       "DEBUG": "web:*",
       "SECRET": "hevpnsnietouesll",
-      "CLIENT_ID": "2228117327.1057504867381",
+      "CLIENT_ID": "1077471219328.1077471956272",
       "CALLBACK_URL": "http://localhost:3000/slack/callback"
     },
     "ignore": "sessions"
