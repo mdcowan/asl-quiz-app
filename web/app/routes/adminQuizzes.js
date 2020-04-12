@@ -26,7 +26,7 @@ router.get('/delete/:id', [
   quizCtrl.deleteQuiz,
 ]);
 // GET /admin/quizzes - loads all the user quizzes
-router.get('/list', quizCtrl.renderDashboard);
+router.get('/', quizCtrl.renderDashboard);
 // GET /admin/quizzes/:id - loads the detail page
 router.get('/:id', quizCtrl.renderAdminQuizDetail);
 // export the route from this file

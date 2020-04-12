@@ -30,10 +30,10 @@ exports.saveQuiz = async (req, res) => {
     // make a put request with the updated information
     data = await req.API.put(`/quizzes/${id}`, { name, type });
   } else {
-    // send the new quizs to the api
+    // send the new quizzes to the api
     data = await req.API.post('/quizzes', { name, type });
   }
-  // redirect to the edit quiz form
+  // redirect to the quiz list
   res.redirect('/admin/quizzes/list');
 };
 
@@ -63,13 +63,12 @@ exports.deleteQuiz = async (req, res) => {
 
 exports.renderDashboard = async (req, res) => {
   const quizzes = await req.API.get('/quizzes');
-  // console.log(quizzes)
   res.render('quizzes/list', { quizzes });
 };
 
 exports.renderAdminQuizDetail = async (req, res) => {
   const { id } = req.params;
-  // console.log(`getting quiz detail ${req}`);
+  console.log(`DEBUG: Detail: getting quiz detail for id ${id}`);
   // get the details of the quizzes
   const quiz = await req.API.get(`/quizzes/${id}`);
   // get the questions for this quizzes

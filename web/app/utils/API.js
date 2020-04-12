@@ -21,8 +21,12 @@ const api = (req, res, next) => {
     // pull the token out of the session
     const { token } = req.session;
     // if there is no token do nothing
-    if (!token) return config;
+    if (!token) {
+      console.log('No token received');
+      return config;
+    }
     // if there is a token, set a header for any request that contains the token
+    console.log(`token ${token}`);
     return {
       ...config,
       headers: { common: { token } },

@@ -4,6 +4,7 @@ const { Quizzes } = require('../models');
 // get all the quizzes
 exports.getAll = async (req, res) => {
 // filter the quizzes to only quizzes that were created by this user
+  console.log(`API DEBUG: get all quizzes for user id: ${req.userId}`);
   const quizzes = await Quizzes.findAll({ where: { userId: req.userId } });
   // respond with json of the quizzes array
   res.json(quizzes);
