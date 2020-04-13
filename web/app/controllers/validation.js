@@ -27,6 +27,14 @@ const checks = {
     .exists().withMessage('Choice type is required')
     .isIn(['correct', 'incorrect'])
     .withMessage('Choice type must be correct or incorrect'),
+  username: check('username')
+    .exists().withMessage('User name is required')
+    .isLength(5)
+    .withMessage('User name is required to be at least 5 characters'),
+  password: check('password')
+    .exists().withMessage('Password is required')
+    .isLength(7)
+    .withMessage('Password is required to be at least 7 characters'),
 };
 
 const checkForErrors = (req, res, next) => {
@@ -74,6 +82,10 @@ exports.validate = (method) => {
 
     case 'deleteChoice': {
       return [checks.id, checkForErrors];
+    }
+
+    case 'checkLogin': {
+      return [checks.username, checks.password, checkForErrors];
     }
 
     default: {

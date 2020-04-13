@@ -68,7 +68,7 @@ exports.renderDashboard = async (req, res) => {
 
 exports.renderAdminQuizDetail = async (req, res) => {
   const { id } = req.params;
-  console.log(`DEBUG: Detail: getting quiz detail for id ${id}`);
+  // console.log(`DEBUG: Detail: getting quiz detail for id ${id}`);
   // get the details of the quizzes
   const quiz = await req.API.get(`/quizzes/${id}`);
   // get the questions for this quizzes

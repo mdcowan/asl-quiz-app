@@ -1,6 +1,6 @@
 extends _layout
 block content
-  h1.heading Login
+  h1.heading Signup
   form.form(method="POST")
     label.form__label 
         span User Name
@@ -8,14 +8,7 @@ block content
     label.form__label 
         span Password
         input.form__input(type="text", name="password", value=password) 
-    button(type="submit" class="button secondary") Login
-    div(class='button active')
-      a(href='/login/slack')
-        i.fab.fa-slack
-        span &nbsp; Login with Slack
-    div(class='button active')
-      a(href='/signup')
-        span Sign Up
+    button(type="submit" class="button secondary") Sign Up
     if errors
         for error in errors
             small.flash=error.msg
