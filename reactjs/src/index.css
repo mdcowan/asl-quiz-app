@@ -1,0 +1,29 @@
+@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+/**
+******** GLOBAL *********
+**/
+:root {
+  --active-color: #ef6c00;
+  --primary-color: #ffc928;
+  --secondary-color: #d32f2f;
+  --text-color: #212121;
+  --light-text-color: #fff8e1;
+  --background-color: #fff8e1;
+  --border-color: #def8f6;
+  --secondary-background-color: #fff3e0;
+  --error-color: #6a1b9a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font: var(--default-font);
+}
+
+body {
+  margin: 0;
+}

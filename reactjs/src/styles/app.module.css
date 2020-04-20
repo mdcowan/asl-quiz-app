@@ -1,0 +1,29 @@
+/* Layout */
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+  
+#content {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+flex: 1;
+min-width: 50vw;
+}
+
+#content > section {
+width: 95%;
+margin: auto;
+justify-self: center;
+}
+
+.row {
+display: flex;
+margin-left: -1em;
+padding: 0;
+list-style: none;
+flex-flow: row wrap;
+}
+
