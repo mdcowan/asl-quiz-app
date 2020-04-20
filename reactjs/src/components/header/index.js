@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RRPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
-import AuthContainer from '../containers/auth';
+import AuthContainer from '../../containers/auth';
 class Header extends React.Component {
     logUserOut = () => {
-
+        const { logout, history } = this.props;
+        logout();
+        history.push('/');
     }
     render() {
     const { loggedIn } = this.props;
@@ -33,6 +36,8 @@ class Header extends React.Component {
 
 Header.propTypes = {
     loggedIn: PropTypes.bool,
+    logout: PropTypes.func.isRequired,
+    history: RRPropTypes.history.isRequired,
 };
   
 Header.defaultProps = {

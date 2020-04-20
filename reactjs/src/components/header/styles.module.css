@@ -11,7 +11,7 @@
     text-transform: uppercase;
     color: var(--light-text-color);
     border-color: var(--light-text-color);
-    composes: link from "../brand.css";
+    composes: link from "../../styles/brand.css";
   }
   
   .header__link {
