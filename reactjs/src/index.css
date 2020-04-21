@@ -1,8 +1,12 @@
 @import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+@import url("https://fonts.googleapis.com/css?family=Aldrich&Cabin");
 /**
 ******** GLOBAL *********
 **/
 :root {
+  --default-font-family: 'Cabin', sans-serif;
+  --secondary-font-family: 'Aldrich', sans-serif;
+  --default-font: 200 18px/1.25em var(--default-font-family);
   --active-color: #ef6c00;
   --primary-color: #ffc928;
   --secondary-color: #d32f2f;
@@ -27,3 +31,4 @@ html {
 body {
   margin: 0;
 }
+

@@ -57,3 +57,16 @@
     outline: 5px dotted var(--primary-color);
     border-radius: 3px;
   }
+
+  .brand-title {
+    font-size: 24px;
+    font-weight: 200;
+    font-style: normal;
+    display: block;
+    margin: 50px 0 5px;
+    color: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    padding-left: 2px;
+  }
+  

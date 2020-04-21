@@ -1,0 +1,28 @@
+.list {
+    border: none;
+    border-top: none;
+    background-color: var(--secondary-background-color);
+    outline: 5px dotted var(--primary-color);
+    padding: 0;
+}
+  
+.list__item{
+display: flex;
+flex-direction: row;
+padding: 20px 20px;
+justify-content: space-between;
+align-items: center;
+}
+
+.list__item:not(:first-child){
+border-top: 1px solid var(--border-color);
+}
+
+.list__item__title {
+font-size: 20px;
+flex-grow: 2;
+}
+
+.heading {
+    composes: heading from '../../styles/brand.css';
+  }
