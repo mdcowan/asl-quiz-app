@@ -1,0 +1,89 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .form__label {
+    color: var(--primary-color);
+    display: block;
+    margin: 0 0 1rem 0;
+    cursor: pointer;
+  }
+  
+  .form__label span {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form__labelInline {
+    display: inline-block;
+    margin-right: 20px;
+    color: var(--text-color);
+    line-height: 20px;
+    vertical-align: top;
+    font-size: 16px;
+  }
+  
+  .form__labelInline span {
+    display: inline;
+  }
+  
+  .form__input {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 10px 10px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 1px var(--active-color);
+    opacity: 0.65;
+    -webkit-appearance: none !important;
+    outline: none;
+    border: none;
+  }
+  
+  .form__input:focus {
+    opacity: 1;
+    box-shadow: 0 0 5px 1px var(--active-color);
+  }
+  
+  .form__input__radio {
+    visibility: hidden;
+    position: relative;
+  }
+  
+  .form__input__radio::before {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--active-color);
+    content: '';
+    border-radius: 50%;
+    visibility: visible;
+  }
+  
+  .form__input__radio:checked::after {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--active-color);
+    content: '';
+    border-radius: 50%;
+    visibility: visible;
+  }
+  
+  .flash {
+    text-align: center;
+    color: var(--error-color);
+    text-transform: uppercase;
+  }
+  

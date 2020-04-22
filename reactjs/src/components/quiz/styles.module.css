@@ -25,4 +25,8 @@ flex-grow: 2;
 
 .heading {
     composes: heading from '../../styles/brand.css';
+}
+
+.button {
+    composes: button from '../../styles/brand.css';
   }
