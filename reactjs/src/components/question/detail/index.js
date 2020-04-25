@@ -24,9 +24,9 @@ class QuestionDetail extends React.Component {
         const { question, choices } = this.props;
         return(
             <React.Fragment>
-                <h1 className={styles.heading}>{question.name}
+                <h1 className={styles.heading}>{question.title}
                     <Link url={`/admin/questions/${question.id}`}/>
-                    <Link url={`/admin/questions/edit/${question.id}`} title='Edit' iconn='fa-edit'/>
+                    <Link url={`/admin/questions/edit/${question.id}`} title='Edit' icon='fa-edit'/>
                     <span onClick={this.delete} role="presentation">
                         <Link url={`/admin/questions/delete/${question.id}`} title='Delete' icon='fa-trash' className='linkSecondary'/>
                     </span>
@@ -40,7 +40,7 @@ class QuestionDetail extends React.Component {
                             <Link url={`/admin/choices/delete/${choice.id}`} title='Delete' icon='fa-trash' className='linkSecondary'/>
                         </li>
                     ))}
-                <RRLink to={`/admin/questions/new?questionId=${question.id}`} className='button active'>Add a new question</RRLink>
+                <RRLink to={`/admin/questions/new?questionId=${question.id}`} className='button active'>Add a new choice</RRLink>
             </React.Fragment>
         );
     }

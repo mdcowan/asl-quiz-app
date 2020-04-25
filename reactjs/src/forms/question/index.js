@@ -29,13 +29,19 @@ class QuestionForm extends React.Component {
     // don't actually submit the form through the browser
     event.preventDefault();
     const {
-      question: { id, quizId }, saveQuestion, history, 
+      question: { id, quizId }, saveQuestion, history, location,
     } = this.props;
+    console.log(this.props)
+
+    const params = new URLSearchParams(location.search);
+    const search = params.get('quizId');
 
     const { title } = this.state;
-    console.log(title);
 
-    if (quizId) {
+    if (search) {
+      await saveQuestion({ id, search, title });
+      history.push(`/admin/quizzes/${search}`);
+    } else {
       await saveQuestion({ id, quizId, title });
       history.push(`/admin/quizzes/${quizId}`);
     }
