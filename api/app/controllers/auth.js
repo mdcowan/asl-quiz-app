@@ -39,7 +39,7 @@ exports.exchangeCode = async (req, res) => {
 exports.getUser = async (req, res) => {
   // pull the username and password out of the body
   const { username, password } = req.body;
-  console.log('INFO: Finding user');
+  console.log(`INFO: Finding user${username} ${password}`);
   const [user] = await Users.findAll({
     where: {
       username: username.toLowerCase(),

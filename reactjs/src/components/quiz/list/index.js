@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles.module.css';
+import styles from '../../styles.module.css';
 import Link from '../../link';
+import { Link as RRLink } from 'react-router-dom';
 import QuizzesContainer from '../../../containers/quizzes';
 class QuizList extends React.Component {
     componentDidMount() {
@@ -23,6 +24,7 @@ class QuizList extends React.Component {
                     </li>
                     ))}
                 </ul>
+                <RRLink to={`/admin/quizzes/new`} className='button active'>Add a new quiz</RRLink>
             </React.Fragment>
         );
     }

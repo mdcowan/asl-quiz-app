@@ -11,6 +11,15 @@ export default function container(Component) {
       this.setState({ loggedIn: false });
     }
 
+    sendLogin = async (username, password) => {
+      // make an API request to verify the login
+      const { token, loggedIn } = await API.post('/auth/login', { username, password });
+      if(loggedIn){
+        localStorage.setItem('token', token);
+        this.setState({ loggedIn });
+      }
+    }
+
     verifySlackCode = async (code) => {
       const { token, loggedIn } = await API.post('/auth/slack', { code, url: process.env.REACT_APP_CALLBACK_URL });
       localStorage.setItem('token', token);
@@ -26,6 +35,7 @@ export default function container(Component) {
           loggedIn={loggedIn}
           logout={this.logout}
           verifySlackCode={this.verifySlackCode}
+          sendLogin={this.sendLogin}
         />
       );
     }

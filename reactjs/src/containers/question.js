@@ -5,16 +5,23 @@ export default function container(Component) {
     // the default state
     state= {
       question: {},
+      choices: [],
     }
 
     fetchQuestion = async (id) => {
       // get the id from the route params
       // get the details of the Question
       const question = await API.get(`/questions/${id}`);
-      this.setState({ question });
+      //get the details of the choices
+      const choices = await API.get(`/choices?questionId=${id}`);
+      this.setState({ question, choices });
+      console.log('API:')
+      console.log(question)
     }
 
     saveQuestion = async (question) => {
+      console.log('Saving: ')
+      console.log(question)
       if (question.id) {
         return API.put(`/questions/${question.id}`, question);
       }
@@ -27,12 +34,13 @@ export default function container(Component) {
     }
 
     render() {
-      const { question } = this.state;
+      const { question, choices } = this.state;
       return (
         <Component
           /* pass all other props that are being passed to this component forward */
           {...this.props}
           question={question}
+          choices={choices}
           fetchQuestion={this.fetchQuestion}
           saveQuestion={this.saveQuestion}
           deleteQuestion={this.deleteQuestion}

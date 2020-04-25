@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
 import styles from '../styles.module.css';
-import Link from '../../link';
-import { QuestionContainer } from '../../containers';
+import Link from '../../components/link';
+import QuestionContainer from '../../containers/question';
 class QuestionForm extends React.Component {
   state = {
     title: undefined,
@@ -16,11 +16,11 @@ class QuestionForm extends React.Component {
 
   handleInputChange = (event) => {
     // pull the name of the input and title of input out of the even object
-    const { target: { name, title } } = event;
+    const { target: { name, value } } = event;
     // update the state to a key of the name of the input and title of the title of the input
     // ex: type: 'private'
     this.setState({
-      [name]: title,
+      [name]: value,
     });
   }
 
@@ -32,12 +32,13 @@ class QuestionForm extends React.Component {
     } = this.props;
 
     const { title } = this.state;
+    console.log(title);
     // get the query params from the url
     const queryParams = new URLSearchParams(location.search);
     // get the quizId from query params
     const quizId = queryParams.get('quizId');
     await saveQuestion({ id, quizId, title });
-    history.push(`/admin/quizs/${quizId}`);
+    history.push(`/admin/quizzes/${quizId}`);
   }
 
   delete = async () => {
@@ -87,7 +88,7 @@ class QuestionForm extends React.Component {
             <input
               type="text"
               name="title"
-              title={title}
+              value={title}
               id="title"
               className={styles.form__input}
               onChange={this.handleInputChange}

@@ -15,17 +15,17 @@ class Header extends React.Component {
     return (
         <header className={styles.header}>
             <div className={styles.header__container}>
-                <Link to='/' class='header__brand'>Movie Trivia Quiz</Link>
+                <Link to='/' className='header__brand'>Movie Trivia Quiz</Link>
                 <div className={styles.links}>
                     {loggedIn && (
                         <React.Fragment>
-                            <Link to='/admin/quizzes/' class='header__link'>Dashboard</Link>
-                            <Link to='/admin/quizzes/new' class='header__link'>Create a new Quiz</Link>
+                            <Link to='/admin/quizzes/' className='header__link'>Dashboard</Link>
+                            <Link to='/admin/quizzes/new' className='header__link'>Create a new Quiz</Link>
                             <button type="button" onClick={this.logUserOut} className={styles.header__link}>Logout</button>
                         </React.Fragment>
                     )}
                     {!loggedIn && (
-                        <Link to='login' class='header__link'>Login</Link>
+                        <Link to='login' className='header__link'>Login</Link>
                     )}
                 </div>
             </div>

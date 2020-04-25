@@ -1,72 +1,71 @@
 /* BRAND */
 .heading {
-    font-family: var(--secondary-font-family);
-    font-weight: 400;
-    font-size: 2.5em;
-    line-height: 1.25em;
-    color: var(--primary-color);
-    border: 5px dotted var(--primary-color);
-  }
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  font-size: 2.5em;
+  line-height: 1.25em;
+  color: var(--primary-color);
+  border: 5px dotted var(--primary-color);
+}
   
-  .headingSecondary {
-    font-family: var(--secondary-font-family);
-    font-weight: 400;
-    font-size: 2em;
-    color: var(--secondary-color);
-  }
-  
-  .link {
-    font-family: var(--secondary-font-family);
-    font-size: 14px;
-    line-height: 1em;
-    display: inline-block;
-    margin: 0 10px;
-    padding: 4px 5px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: var(--active-color);
-    border: none;
-    border-bottom: 1px solid var(--active-color);
-    outline: none;
-    background: none;
-  }
-  
-  .fas {
-    margin-right: 0.5em;
-  }
-  
-  .link:hover {
-    opacity: 0.6;
-  }
-  
-  .linkSecondary {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-  
-  .button {
-    font-family: var(--secondary-font-family);
-    font-size: 18px;
-    display: inline-block;
-    margin: 20px auto;
-    padding: 10px 40px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: var(--light-text-color);
-    border: none;
-    outline: 5px dotted var(--primary-color);
-    border-radius: 3px;
-  }
+.headingSecondary {
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  font-size: 2em;
+  color: var(--secondary-color);
+}
 
-  .brand-title {
-    font-size: 24px;
-    font-weight: 200;
-    font-style: normal;
-    display: block;
-    margin: 50px 0 5px;
-    color: rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 5px;
-    padding-left: 2px;
-  }
-  
+.link {
+  font-family: var(--secondary-font-family);
+  font-size: 14px;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 4px 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--active-color);
+  border: none;
+  border-bottom: 1px solid var(--active-color);
+  outline: none;
+  background: none;
+}
+
+.fas {
+  margin-right: 0.5em;
+}
+
+.link:hover {
+  opacity: 0.6;
+}
+
+.linkSecondary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.button {
+  font-family: var(--secondary-font-family);
+  font-size: 18px;
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--light-text-color);
+  border: none;
+  outline: 5px dotted var(--primary-color);
+  border-radius: 3px;
+}
+
+.brand-title {
+  font-size: 24px;
+  font-weight: 200;
+  font-style: normal;
+  display: block;
+  margin: 50px 0 5px;
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+  padding-left: 2px;
+}

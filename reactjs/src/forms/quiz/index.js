@@ -15,8 +15,8 @@ class QuizForm extends React.Component {
     
     componentDidMount() {
         // get the id from the route params
-        const { fetchQuiz, match: { params: { id } } } = this.props;
-        if (id) fetchQuiz(id);
+        const { fetchQuiz, match: { params: { quizId } } } = this.props;
+        fetchQuiz(quizId);
     }
 
     handleInputChange = (event) => {
@@ -32,10 +32,10 @@ class QuizForm extends React.Component {
     save = async (event) => {
         // don't actually submit the form through the browser
         event.preventDefault();
-        const { quiz: { id }, saveQuiz, history } = this.props;
+        const { quiz: { quizId }, saveQuiz, history } = this.props;
         const { name, type = 'public' } = this.state;
-        const data = await saveQuiz({ id, name, type });
-        history.push(`/admin/quizzes/${data.id}`);
+        const data = await saveQuiz({ quizId, name, type });
+        history.push(`/admin/quizzes/${data.quizId}`);
     }
       
     render() {
@@ -43,14 +43,18 @@ class QuizForm extends React.Component {
             quiz: { id, name: defaultName = '', type: defaultType = 'public' },
         } = this.props;
 
-        const {
-            name = defaultName,
-            type = defaultType,
-        } = this.state;
+        const { name = defaultName, type = defaultType } = this.state;
+
+        let heading;
+        if (id){
+            heading = 'Edit Quiz';
+        } else {
+            heading = 'Create a New Quiz';
+        }
 
         return (
             <React.Fragment>
-                <h1 className={styles.heading}>{id ? 'Edit a Quiz' : 'Create a New Quiz'}</h1>
+                <h1 className={styles.heading}>{heading}</h1>
                 <form method="POST" className={styles.form} onSubmit={this.save}>
                     <label className={styles.form__label} htmlFor="name">
                         <span>Quiz Name</span>
@@ -92,9 +96,9 @@ class QuizForm extends React.Component {
                     </label>
                     <button 
                         type="submit" 
-                        class="button active"
+                        className="button active"
                     >
-                        {id ? 'Save Quiz' : 'Create a New Quiz'}
+                        Save
                     </button>
                 </form>
             </React.Fragment>
