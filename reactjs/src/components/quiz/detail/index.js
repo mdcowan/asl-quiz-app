@@ -24,7 +24,7 @@ class QuizDetail extends React.Component {
             <React.Fragment>
                 <h1 className={styles.heading}>{quiz.name}
                     <Link url={`/admin/quizzes/${quiz.id}`}/>
-                    <Link url={`/admin/quizzes/edit/${quiz.id}`} title='Edit' iconn='fa-edit'/>
+                    <Link url={`/admin/quizzes/edit/${quiz.id}`} title='Edit' icon='fa-edit'/>
                     <span onClick={this.delete} role="presentation">
                         <Link url={`/admin/quizzes/delete/`} title='Delete' icon='fa-trash' className='linkSecondary'/>
                     </span>
@@ -35,6 +35,7 @@ class QuizDetail extends React.Component {
                         <li className={styles.list__item} key={question.id}>
                             <span className={styles.list__item__title}>{question.title}</span>
                             <Link url={`/admin/questions/${question.id}`}/>
+                            <Link url={`/admin/questions/edit/${question.id}`} title='Edit' icon='fa-edit'/>
                         </li>
                     ))}
                 <RRLink to={`/admin/questions/new?quizId=${quiz.id}`} className='button active'>Add a new question</RRLink>

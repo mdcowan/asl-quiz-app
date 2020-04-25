@@ -10,8 +10,9 @@ class QuestionForm extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchQuestion, match: { params: { id } } } = this.props;
-    if (id) fetchQuestion(id);
+    const { fetchQuestion, match: { params: { questionId } } } = this.props;
+    if (questionId) fetchQuestion(questionId);
+    console.log(this.props)
   }
 
   handleInputChange = (event) => {
@@ -28,17 +29,16 @@ class QuestionForm extends React.Component {
     // don't actually submit the form through the browser
     event.preventDefault();
     const {
-      question: { id }, saveQuestion, history, location,
+      question: { id, quizId }, saveQuestion, history, 
     } = this.props;
 
     const { title } = this.state;
     console.log(title);
-    // get the query params from the url
-    const queryParams = new URLSearchParams(location.search);
-    // get the quizId from query params
-    const quizId = queryParams.get('quizId');
-    await saveQuestion({ id, quizId, title });
-    history.push(`/admin/quizzes/${quizId}`);
+
+    if (quizId) {
+      await saveQuestion({ id, quizId, title });
+      history.push(`/admin/quizzes/${quizId}`);
+    }
   }
 
   delete = async () => {
