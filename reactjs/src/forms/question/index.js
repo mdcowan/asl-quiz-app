@@ -12,7 +12,6 @@ class QuestionForm extends React.Component {
   componentDidMount() {
     const { fetchQuestion, match: { params: { questionId } } } = this.props;
     if (questionId) fetchQuestion(questionId);
-    console.log(this.props)
   }
 
   handleInputChange = (event) => {
@@ -39,7 +38,7 @@ class QuestionForm extends React.Component {
     const { title } = this.state;
 
     if (search) {
-      await saveQuestion({ id, search, title });
+      await saveQuestion({ id, quizId: search, title });
       history.push(`/admin/quizzes/${search}`);
     } else {
       await saveQuestion({ id, quizId, title });
@@ -100,7 +99,7 @@ class QuestionForm extends React.Component {
               onChange={this.handleInputChange}
             />
           </label>
-          <button type="submit" className={styles.button}>Save</button>
+          <button type="submit" className={`${styles.button} active`}>Save</button>
         </form>
       </>
     );

@@ -17,7 +17,7 @@ class Landing extends React.Component {
                 <h2 className={styles.headingSecondary}>Are you a movie buff? Test your skills here!</h2>
                 <p>Check out the quizzes created by others below for fun movie trivia challenges</p>
                 <h2 className={styles.headingSecondary}>Want to test your friend's knowledge?</h2>
-                <a href='/login' class='button primary'>Create your own Quiz</a>
+                <a href='/login' className={`${styles.button} primary`}>Create your own Quiz</a>
                 <h1 className={styles.heading}>Public Quizzes</h1>
                 <ul className={styles.list}>
                     {publicQuizzes.map(quiz => (

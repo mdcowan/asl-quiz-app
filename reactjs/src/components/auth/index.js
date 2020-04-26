@@ -59,37 +59,35 @@ class Login extends React.Component {
         <>
             <h1>Login</h1>
             <form method="POST" className={styles.form} onSubmit={this.save}>
-            <label className={styles.form__label} htmlFor="username">
-                <span>Username</span>
-                <input
-                type="text"
-                name="username"
-                username={username}
-                id="username"
-                className={styles.form__input}
-                onChange={this.handleInputChange}
-                />
-            </label>
-            <label className={styles.form__label} htmlFor="password">
-                <span>Password</span>
-                <input
-                type="text"
-                name="password"
-                password={password}
-                id="password"
-                className={styles.form__input}
-                onChange={this.handleInputChange}
-                />
-            </label>
-            <button type="submit" onClick={this.login} className={styles.button}>Login</button>
+                <label className={styles.form__label} htmlFor="username">
+                    <span>Username</span>
+                    <input
+                    type="text"
+                    name="username"
+                    username={username}
+                    id="username"
+                    className={styles.form__input}
+                    onChange={this.handleInputChange}
+                    />
+                </label>
+                <label className={styles.form__label} htmlFor="password">
+                    <span>Password</span>
+                    <input
+                    type="text"
+                    name="password"
+                    password={password}
+                    id="password"
+                    className={styles.form__input}
+                    onChange={this.handleInputChange}
+                    />
+                </label>
+                <button type="submit" onClick={this.login} className={`${styles.button} secondary`}>Login</button>
             </form>
-            <div>
-                <button type="button" onClick={this.redirectToSlack} className={styles.button}>
+            <button type="button" onClick={this.redirectToSlack} className={`${styles.button} active`}>
                     <i className="fab fa-slack" />
-                    <span>Login with Slack</span>
-                </button>
-            </div>
-            <RRLink to={`/signup`} className={'button active'}>Sign Up</RRLink>
+                    <span> Login with Slack</span>
+            </button>
+            <RRLink to={`/signup`} className={`${styles.button} active`}>Sign Up</RRLink>
         </>
         );
     }

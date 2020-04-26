@@ -17,6 +17,7 @@ export default function container(Component) {
       this.setState({ question, choices });
       console.log('API:')
       console.log(question)
+      console.log(choices)
     }
 
     saveQuestion = async (question) => {
@@ -30,6 +31,7 @@ export default function container(Component) {
     }
 
     deleteQuestion = async (id) => {
+      console.log('API Deleting ID: ' +id)
       await API.delete(`/questions/${id}`);
     }
 

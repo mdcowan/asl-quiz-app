@@ -60,7 +60,7 @@ class SignUp extends React.Component {
                 onChange={this.handleInputChange}
                 />
             </label>
-            <button type="submit" onClick={this.signup} className={styles.button}>Submit</button>
+            <button type="submit" onClick={this.signup} className={`${styles.button} active`}>Submit</button>
             </form>
         </>
         );

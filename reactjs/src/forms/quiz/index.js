@@ -17,6 +17,7 @@ class QuizForm extends React.Component {
         // get the id from the route params
         const { fetchQuiz, match: { params: { quizId } } } = this.props;
         fetchQuiz(quizId);
+        console.log(this.props)
     }
 
     handleInputChange = (event) => {
@@ -32,10 +33,11 @@ class QuizForm extends React.Component {
     save = async (event) => {
         // don't actually submit the form through the browser
         event.preventDefault();
-        const { quiz: { quizId }, saveQuiz, history } = this.props;
+        const { quiz: { id }, saveQuiz, history } = this.props;
         const { name, type = 'public' } = this.state;
-        const data = await saveQuiz({ quizId, name, type });
-        history.push(`/admin/quizzes/${data.quizId}`);
+        const data = await saveQuiz({ id, name, type });
+        console.log(data)
+        history.push(`/admin/quizzes/${data.id}`);
     }
       
     render() {
@@ -69,7 +71,7 @@ class QuizForm extends React.Component {
                     </label>
                     <label className={styles.form__label} htmlFor="public">
                         <span>Quiz Type</span>
-                        <label className={styles.form__labelInline}>
+                        <label className={styles.form__labelInline} htmlFor="public">
                             <input 
                                 type="radio" 
                                 name="type" 
@@ -96,7 +98,7 @@ class QuizForm extends React.Component {
                     </label>
                     <button 
                         type="submit" 
-                        className="button active"
+                        className={`${styles.button} active`}
                     >
                         Save
                     </button>

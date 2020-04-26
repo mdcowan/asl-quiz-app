@@ -7,14 +7,19 @@ export default function container(Component) {
       choice: {},
     }
 
-    fetchchoice = async (id) => {
+    fetchChoice = async (id) => {
       // get the id from the route params
-      // get the details of the choice
+      // get the details of the Choice
       const choice = await API.get(`/choices/${id}`);
-      this.setState({ choice });
+      this.setState({choice});
+      console.log('API:')
+      console.log(choice)
+
     }
 
-    savechoice = async (choice) => {
+    saveChoice = async (choice) => {
+      console.log('Saving: ')
+      console.log(choice)
       if (choice.id) {
         return API.put(`/choices/${choice.id}`, choice);
       }
@@ -22,12 +27,12 @@ export default function container(Component) {
       return API.post('/choices', choice);
     }
 
-    deletechoice = async (id) => {
+    deleteChoice = async (id) => {
       await API.delete(`/choices/${id}`);
     }
 
     render() {
-      const { choice } = this.state;
+      const { choice} = this.state;
       return (
         <Component
           /* pass all other props that are being passed to this component forward */

@@ -23,14 +23,13 @@ class QuizDetail extends React.Component {
         return(
             <React.Fragment>
                 <h1 className={styles.heading}>{quiz.name}
-                    <Link url={`/admin/quizzes/${quiz.id}`}/>
                     <Link url={`/admin/quizzes/edit/${quiz.id}`} title='Edit' icon='fa-edit'/>
                     <span onClick={this.delete} role="presentation">
-                        <Link url={`/admin/quizzes/delete/`} title='Delete' icon='fa-trash' className='linkSecondary'/>
+                        <Link url={`/admin/quizzes/`} title='Delete' icon='fa-trash' className='linkSecondary'/>
                     </span>
                 </h1>
                 <h2 className={styles.headingSecondary}>Questions</h2>
-                <ul className={styles.list}></ul>
+                <ul className={styles.list}>
                     {questions.map(question => (
                         <li className={styles.list__item} key={question.id}>
                             <span className={styles.list__item__title}>{question.title}</span>
@@ -38,7 +37,8 @@ class QuizDetail extends React.Component {
                             <Link url={`/admin/questions/edit/${question.id}`} title='Edit' icon='fa-edit'/>
                         </li>
                     ))}
-                <RRLink to={`/admin/questions/new?quizId=${quiz.id}`} className='button active'>Add a new question</RRLink>
+                </ul>
+                <RRLink to={`/admin/questions/new?quizId=${quiz.id}`} className={`${styles.button} primary`}>Add a new question</RRLink>
             </React.Fragment>
         );
     }

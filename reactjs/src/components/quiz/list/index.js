@@ -24,7 +24,7 @@ class QuizList extends React.Component {
                     </li>
                     ))}
                 </ul>
-                <RRLink to={`/admin/quizzes/new`} className='button active'>Add a new quiz</RRLink>
+                <RRLink to={`/admin/quizzes/new`} className={`${styles.button} primary`}>Add a new quiz</RRLink>
             </React.Fragment>
         );
     }

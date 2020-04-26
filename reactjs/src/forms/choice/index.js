@@ -2,27 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
 import styles from '../styles.module.css';
-import Link from '../../link';
-import { ChoiceContainer } from '../../containers';
+import Link from '../../components/link';
+import ChoiceContainer from '../../containers/choice';
 class ChoiceForm extends React.Component {
   state = {
     value: undefined,
-    type: undefined
+    type: undefined,
   }
 
   componentDidMount() {
-    const { fetchchoice, match: { params: { id } } } = this.props;
-    console.log(this.props);
-    if (id) fetchchoice(id);
+    const { fetchChoice, match: { params: { choiceId } } } = this.props;
+    if (choiceId) fetchChoice(choiceId);
   }
 
   handleInputChange = (event) => {
     // pull the name of the input and title of input out of the even object
-    const { target: { name, title } } = event;
+    const { target: { name, value } } = event;
     // update the state to a key of the name of the input and title of the title of the input
     // ex: type: 'private'
     this.setState({
-      [name]: title,
+      [name]: value,
     });
   }
 
@@ -30,42 +29,40 @@ class ChoiceForm extends React.Component {
     // don't actually submit the form through the browser
     event.preventDefault();
     const {
-      choice: { id }, saveChoice, history, location,
+      choice: { id, questionId }, saveChoice, history, location,
     } = this.props;
+    console.log('Web request:')
+    console.log(this.props)
+    const { value, type } = this.state;
+    console.log(value)
+    console.log(type)
+    console.log(id)
 
-    const { title } = this.state;
-    // get the query params from the url
-    const queryParams = new URLSearchParams(location.search);
-    // get the choiceId from query params
-    const choiceId = queryParams.get('choiceId');
-    await saveChoice({ id, choiceId, title });
-    history.push(`/admin/choices/${choiceId}`);
+    const params = new URLSearchParams(location.search);
+    const search = params.get('questionId');
+    console.log(`Found search: ${search}`)    
+
+    if (search) {
+      await saveChoice({ questionId: search, value, type });
+      history.push(`/admin/questions/${search}`);
+    } else {
+      await saveChoice({ id, questionId, value, type });
+      history.push(`/admin/questions/${questionId}`);
+    }
   }
 
-  delete = async () => {
+  delete = async (event) => {
+    event.preventDefault()
     const { deleteChoice, choice: { id } } = this.props;
     await deleteChoice(id);
   }
 
   render() {
     const {
-      choice: {
-        id,
-        title: defaultvalue = '',
-        type: defaultType = 'incorrect',
-      },
-      location,
+      choice: { id, value: defaultValue = '', type: defaultType = 'incorrect' },
     } = this.props;
 
-    // get the query params from the url
-    const queryParams = new URLSearchParams(location.search);
-    // get the choiceId from query params
-    const choiceId = queryParams.get('choiceId');
-    const {
-      // get the valye and type from the state and if it doesn't exist use the prop
-      value = defaultvalue,
-      type = defaultType,
-    } = this.state;
+    const { value = defaultValue, type = defaultType } = this.state;
 
     return (
       <>
@@ -74,7 +71,7 @@ class ChoiceForm extends React.Component {
           <React.Fragment>
             <span>Edit Choice</span>
             <span onClick={this.delete} role="presentation">
-              <Link url={`/admin/choices/${choiceId}`} title="Delete" icon="fa-trash" className="linkSecondary" />
+              <Link url={`/admin/quizzes`} title="Delete" icon="fa-trash" className="linkSecondary" />
             </span>
           </React.Fragment>
           )}
@@ -86,7 +83,7 @@ class ChoiceForm extends React.Component {
         </h1>
         <form method="POST" className={styles.form} onSubmit={this.save}>
           <label className={styles.form__label} htmlFor="value">
-            <span>Value</span>
+            <span>Title</span>
             <input
               type="text"
               name="value"
@@ -96,9 +93,9 @@ class ChoiceForm extends React.Component {
               onChange={this.handleInputChange}
             />
           </label>
-          <label className={styles.form__label}>
-            <span>Quiz Type</span>
-            <label className={styles.form__labelInline} htmlFor="incorrect">
+          <label className={styles.form__label} htmlFor="incorrect">
+            <span>Choice Type</span>
+            <label className={styles.form__labelInline}>
                 <input 
                     type="radio" 
                     name="type" 
@@ -121,9 +118,9 @@ class ChoiceForm extends React.Component {
                     onChange={this.handleInputChange}
                 />
                 <span>Correct</span>
-              </label>
-          </label>
-          <button type="submit" className={styles.button}>Save</button>
+            </label>
+        </label>
+          <button type="submit" className={`${styles.button} active`}>Save</button>
         </form>
       </>
     );

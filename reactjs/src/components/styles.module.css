@@ -27,6 +27,10 @@ flex-grow: 2;
     composes: heading from '../styles/brand.css';
 }
 
+.headingSecondary {
+    composes: headingSecondary from '../styles/brand.css';
+}
+
 .button {
     composes: button from '../styles/brand.css';
   }

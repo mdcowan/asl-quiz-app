@@ -11,6 +11,7 @@ import QuizDetail from './components/quiz/detail';
 import QuizForm from './forms/quiz';
 import QuestionDetail from './components/question/detail';
 import QuestionForm from './forms/question';
+import ChoiceForm from './forms/choice';
 
 class App extends Component {
   render() {
@@ -30,6 +31,8 @@ class App extends Component {
               <Route path="/admin/questions/new" exact component={QuestionForm} />
               <Route path="/admin/questions/edit/:questionId" exact component={QuestionForm} />
               <Route path="/admin/questions/:questionId" exact component={QuestionDetail} />
+              <Route path="/admin/choices/new" exact component={ChoiceForm} />
+              <Route path="/admin/choices/edit/:choiceId" exact component={ChoiceForm} />
             </Switch>
             
           </main>

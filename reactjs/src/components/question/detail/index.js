@@ -25,22 +25,22 @@ class QuestionDetail extends React.Component {
         return(
             <React.Fragment>
                 <h1 className={styles.heading}>{question.title}
-                    <Link url={`/admin/questions/${question.id}`}/>
                     <Link url={`/admin/questions/edit/${question.id}`} title='Edit' icon='fa-edit'/>
                     <span onClick={this.delete} role="presentation">
-                        <Link url={`/admin/questions/delete/${question.id}`} title='Delete' icon='fa-trash' className='linkSecondary'/>
+                        <Link url={`/admin/quizzes/`} title='Delete' icon='fa-trash' className='linkSecondary'/>
                     </span>
                 </h1>
                 <h2 className={styles.headingSecondary}>Choices</h2>
-                <ul className={styles.list}></ul>
+                <ul className={styles.list}>
                     {choices.map(choice => (
-                        <li className={styles.list__item}>
-                            <span className={styles.list__item__title}>{choice.title}</span>
-                            <Link url={`/admin/choices/${choice.id}`}/>
-                            <Link url={`/admin/choices/delete/${choice.id}`} title='Delete' icon='fa-trash' className='linkSecondary'/>
+                        <li className={styles.list__item} key={choice.id}>
+                            <span className={styles.list__item__title}>{choice.value}</span>
+                            <Link url={`/admin/choices/edit/${choice.id}`} title='Edit' icon='fa-edit'/>
                         </li>
                     ))}
-                <RRLink to={`/admin/questions/new?questionId=${question.id}`} className='button active'>Add a new choice</RRLink>
+                </ul>
+                <RRLink to={`/admin/choices/new?questionId=${question.id}`} className={`${styles.button} primary`}>Add a new choice</RRLink>
+
             </React.Fragment>
         );
     }
