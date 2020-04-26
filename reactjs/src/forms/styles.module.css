@@ -86,3 +86,7 @@
     color: var(--error-color);
     text-transform: uppercase;
 }
+
+.button {
+    composes: button from '../styles/brand.css';
+  }
